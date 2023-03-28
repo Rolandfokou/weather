@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <title>mA meteo journaliere</title>
+</head>
+<body>
+    <div class = "container">
+        <div class ="row justify-content-center">
+            <div class ="col-12 col-sm-6 my-3">
+<form>
+<div class = "form-group">
+    <input type="text" class="form-control" id="inputcity" />
+    </div>
+    <button type="submit" class="btn btn-info btn-clock">Rechercher</button>
+</form>
+</div>
+ 
+<div class="col-12 col-sm-6 d flex justify-content-center my-3">
+    <div class="box-container">
+        <div id="city" class="box"></div>
+        <div id="temp" class="box"></div>
+        <div id="humidity" class="box"></div>
+        <div id="wind" class="box"></div>
+    </div>
+</div>
+
+</div>
+
+</div>
+    <script >
+
+const APIKEY = '77b2df3aac1d4f3a851338871db307f4';
+
+let apicall= function (city){
+    let url = 'https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={Yaounde}&appid=${APIKEY}';
+
+fetch(url).then((response) => response.json().then((data) => {
+
+
+    console.log(data);
+document.querySelector('#city').innerHTML = data.name;
+document.querySelector('#temp').innerHTML = "<i class = 'fas fa-thermometer-half'></i>"+data.maina.temp + ' ';
+document.querySelector('#humidity').innerHTML = "<i class = 'fas fa-tint'></i>"+data.main.humidity + '%'
+document.querySelector('#wind').innerHTML = "<i class = 'fas fa-wind'></i>"+data.wind.speed + 'km/h';})
+
+);
+
+ document.querySelector('form').addEventListener('submit', function(e){
+  e.preventDefault();
+ });
+ let ville = document.querySelector('#inputcity').value;
+
+}
+
+apicall(ville)
+
+    </script>
+    
+</body>
+</html>
+<style>
+
+body{
+    background-image: url(../image/th.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.box-container{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.box{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: aqua;
+}
+
+
+#city{
+    background-color: rgba(42, 128, 185, 0.75);
+}
+
+
+#temp{
+background-color: rgba(42, 127, 185, 0.75);
+}
+
+
+
+</style>

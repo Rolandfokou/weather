@@ -1,0 +1,35 @@
+body{
+    background-image: url(../image/IMG_7057-Kopie.PNG);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.box-container{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.box{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: aqua;
+}
+
+
+#city{
+    background-color: rgba(42, 128, 185, 0.75);
+}
+
+
+#temp{
+background-color: rgba(42, 127, 185, 0.75);
+}
